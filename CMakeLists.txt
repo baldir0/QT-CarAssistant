@@ -20,6 +20,22 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
+        car.h
+        car.cpp
+        service.h
+        service.cpp
+        calculator.h
+        calculator.cpp
+        expenses.h
+        expenses.cpp
+        expense.h
+        expense.cpp
+        statistics.h
+        statistics.cpp
+        menu.h
+        menu.cpp
+        mainmenuui.h
+        mainmenuui.cpp
         mainwindow.ui
         ${TS_FILES}
 )
