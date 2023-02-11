@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewCarForm</class>
+ <widget class="QDialog" name="NewCarForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>389</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QDialogButtonBox" name="NEW_CAR_FORM_BUTTONS">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>20</y>
+     <width>81</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>19</x>
+     <y>19</y>
+     <width>261</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="NEW_CAR_FORM_LAYOUT">
+    <item row="0" column="0">
+     <widget class="QLabel" name="CAR_NAME_LABEL">
+      <property name="text">
+       <string>Car Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="CAR_NAME_VALUE"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="DESCRIPTION_LABEL">
+      <property name="text">
+       <string>Description</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="DESCRIPTION_VALUE">
+      <property name="text">
+       <string>none</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="MODEL_LABEL">
+      <property name="text">
+       <string>Model</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="BRAND_LABEL">
+      <property name="text">
+       <string>Brand</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="PRODUCTION_DATE_LABEL">
+      <property name="text">
+       <string>Production Date</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="INSURANCE_DATE_LABEL">
+      <property name="text">
+       <string>Insurance Date</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="OIL_CHANGE_DATE_LABEL">
+      <property name="text">
+       <string>Oil Change Date</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="SERVICE_DATE_LABEL">
+      <property name="text">
+       <string>Service Date</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="TANK_CAPACITY_LABEL">
+      <property name="text">
+       <string>Tank Capacity</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="ENGINE_CAPACITY_LABEL">
+      <property name="text">
+       <string>Engine Capacity</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="FUEL_TYPE_LABEL">
+      <property name="text">
+       <string>Fuel Type</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="MODEL_VALUE">
+      <property name="text">
+       <string>unknown</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="BRAND_VALUE">
+      <property name="text">
+       <string>unknow</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QDateEdit" name="PRODUCTION_DATE_VALUE">
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QDateEdit" name="INSURANCE_DATE_VALUE">
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="buttonSymbols">
+       <enum>QAbstractSpinBox::NoButtons</enum>
+      </property>
+      <property name="specialValueText">
+       <string/>
+      </property>
+      <property name="accelerated">
+       <bool>false</bool>
+      </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>false</bool>
+      </property>
+      <property name="dateTime">
+       <datetime>
+        <hour>1</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>1999</year>
+        <month>12</month>
+        <day>31</day>
+       </datetime>
+      </property>
+      <property name="currentSection">
+       <enum>QDateTimeEdit::DaySection</enum>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+      <property name="currentSectionIndex">
+       <number>0</number>
+      </property>
+      <property name="timeSpec">
+       <enum>Qt::LocalTime</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QDateEdit" name="OIL_CHANGE_DATE_VALUE">
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QDateEdit" name="SERVICE_DATE_VALUE">
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="TANK_CAPACITY_VALUE">
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLineEdit" name="ENGINE_CAPACITY_VALUE">
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="1">
+     <widget class="QComboBox" name="FUEL_TYPE_VALUE">
+      <item>
+       <property name="text">
+        <string>Gasoline</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Diesel</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Gas</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Other</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>NEW_CAR_FORM_BUTTONS</sender>
+   <signal>accepted()</signal>
+   <receiver>NewCarForm</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>NEW_CAR_FORM_BUTTONS</sender>
+   <signal>rejected()</signal>
+   <receiver>NewCarForm</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

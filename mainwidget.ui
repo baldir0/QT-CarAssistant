@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWidget</class>
+ <widget class="QWidget" name="MainWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWidget</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="MENU_BAR">
+     <item>
+      <widget class="QPushButton" name="HOME_BUTTON">
+       <property name="text">
+        <string>HOME</string>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="STATISTICS_BUTTON">
+       <property name="text">
+        <string>STATISTICS</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="SERVICE_BUTTON">
+       <property name="text">
+        <string>SERVICE</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CALCULATOR_BUTTON">
+       <property name="text">
+        <string>CALCULATOR</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="APP_CONTENT">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="HOME_PAGE">
+      <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,1" columnstretch="1,1">
+       <item row="0" column="1">
+        <widget class="QFrame" name="EXPENSES_INFO">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1">
+          <item>
+           <widget class="QFrame" name="EXPENSES_LABEL">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,0">
+             <item>
+              <widget class="QLabel" name="LABEL_EXPENSES">
+               <property name="text">
+                <string>Expenses</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QPushButton" name="pushButton_2">
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>+</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-add">
+                   <normaloff>.</normaloff>.</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>16</width>
+                   <height>16</height>
+                  </size>
+                 </property>
+                 <property name="checkable">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoRepeat">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoRepeatInterval">
+                  <number>100</number>
+                 </property>
+                 <property name="autoDefault">
+                  <bool>false</bool>
+                 </property>
+                 <property name="default">
+                  <bool>false</bool>
+                 </property>
+                 <property name="flat">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="text">
+                  <string>-</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-remove">
+                   <normaloff>.</normaloff>.</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="EXPENSES_VALUE">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QListWidget" name="EXPENSES_LIST"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QFrame" name="PETROL_INFO">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
+          <item>
+           <widget class="QFrame" name="PETROL_LABEL">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="LABEL_TEXT">
+               <property name="text">
+                <string>Petrol</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="PETROL_VALUE">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QFrame" name="HISTORY_INFO">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,1">
+          <item>
+           <widget class="QFrame" name="HISTORY_LABEL">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="LABEL_LAST_ENTRIES">
+               <property name="text">
+                <string>Last Entries</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="HISTORY_VALUE">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="STATISTICS_PAGE">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <layout class="QFormLayout" name="LEFT_PANE">
+         <item row="0" column="0">
+          <widget class="QLabel" name="CAR_DISPLAY_NAME">
+           <property name="text">
+            <string>Car Display Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="CAR_DISPLAY_NAME_VALUE">
+           <property name="text">
+            <string>Car Name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="CAR_DESCRIPTION">
+           <property name="text">
+            <string>Car Description:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="CAR_DESCRIPTION_VALUE">
+           <property name="text">
+            <string>Description Value</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="CAR_MODEL">
+           <property name="text">
+            <string>Model:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="CAR_MODEL_VALUE">
+           <property name="text">
+            <string>Car Model</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="CAR_BRAND">
+           <property name="text">
+            <string>Brand:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="CAR_BRAND_VALUE">
+           <property name="text">
+            <string>Car Brand</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="CAR_PRODUCTION_DATE">
+           <property name="text">
+            <string>Production Date:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDateEdit" name="CAR_PRODUCTION_DATE_VALUE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="CAR_TANK_CAPACITY">
+           <property name="text">
+            <string>Tank Capacity:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="CAR_TANK_CAPACITY_VALUE">
+           <property name="text">
+            <string>Tank Capacity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="CAR_ENGINE_CAPACITY">
+           <property name="text">
+            <string>Engine Capacity:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLabel" name="CAR_ENGINE_CAPACITY_VALUE">
+           <property name="text">
+            <string>Engine Capacity</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <layout class="QFormLayout" name="RIGHT_PANE">
+         <item row="0" column="0">
+          <widget class="QLabel" name="LAST_FILL_RANGE">
+           <property name="text">
+            <string>Last Fill Distance:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="LAST_FILL_RANGE_VALUE">
+           <property name="text">
+            <string>0 km</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="AVERAGE_FILL_RANGE">
+           <property name="text">
+            <string>Avarage Fill Range:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="AVERAGE_FILL_RANGE_VALUE">
+           <property name="text">
+            <string>0 km</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="AVERAGE_FILL_PRICE">
+           <property name="text">
+            <string>Average Fill Price:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="AVERAGE_FILL_PRICE_VALUE">
+           <property name="text">
+            <string>0 PLN</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="TOTAL_FUEL_COST">
+           <property name="text">
+            <string>Total Fuel Cost:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="TOTAL_FUEL_COST_VALUE">
+           <property name="text">
+            <string>0 PLN</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="LAST_KNOWN_MILEAGE">
+           <property name="text">
+            <string>Last Known Mileage:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="LAST_KNOWN_MILEAGE_VALUE">
+           <property name="text">
+            <string>0 km</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="SERVICE_PAGE">
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0">
+       <item row="0" column="0">
+        <layout class="QFormLayout" name="SERVICE_CONTAINER">
+         <item row="0" column="0">
+          <widget class="QLabel" name="SERVICE_LAST_OIL_CHANGE_DATE">
+           <property name="text">
+            <string>Last Oil Change Date:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="SERVICE_LAST_OIL_CHANGE_DATE_CONTAINER">
+           <item>
+            <widget class="QDateEdit" name="SERVICE_LAST_OIL_CHANGE_DATE_VALUE">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SERVICE_LAST_OIL_CHANGE_DATE_STATUS">
+             <property name="text">
+              <string>Ok</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="SERVICE_LAST_OIL_CHANGE_MILEAGE">
+           <property name="text">
+            <string>Last Oil Change Mileage</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <layout class="QHBoxLayout" name="SERVICE_LAST_OIL_CHANGE_MILEAGE_CONTAINER">
+           <item>
+            <widget class="QLineEdit" name="SERVICE_LAST_OIL_CHANGE_MILEAGE_VALUE">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SERVICE_LAST_OIL_CHANGE_MILEAGE_STATUS">
+             <property name="text">
+              <string>Ok</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="SERVICE_DATE">
+           <property name="text">
+            <string>Service Date</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <layout class="QHBoxLayout" name="SERVICE_DATE_CONTAINER">
+           <item>
+            <widget class="QDateEdit" name="SERVICE_DATE_VALUE">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SERVICE_DATE_STATUS">
+             <property name="text">
+              <string>Ok</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="SERVICE_FUEL_TYPE">
+           <property name="text">
+            <string>Fuel Type</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="SERVICE_FUEL_TYPE_VALUE">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="SERVICE_ENGINE_CAPACITY">
+           <property name="text">
+            <string>Engine Capacity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="SERVICE_ENGINE_CAPACITY_VALUE">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="SERVICE_TANK_CAPACITY">
+           <property name="text">
+            <string>Tank Capacity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="SERVICE_TANK_CAPACITY_VALUE">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="SERVICE_INSURANCE_DATE">
+           <property name="text">
+            <string>Insurance Date</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <layout class="QHBoxLayout" name="SERVICE_INSURANCE_DATE_CONTAINER">
+           <item>
+            <widget class="QDateEdit" name="SERVICE_INSURANCE_DATE_VALUE">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="SERVICE_INSURANCE_DATE_STATUS">
+             <property name="text">
+              <string>Ok</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="CALCULATOR_PAGE">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QComboBox" name="CALCULATOR_OPERATION_PICK">
+         <item>
+          <property name="text">
+           <string>Trip Price</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Range</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Fuel Consumption Unit</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Fuel Consumption</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="CALCULATOR_FIELDS_CONTAINER">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="CALCULATOR_FUEL_PRICE_VALUE">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="CALCULATOR_NEEDED_FUEL_LABEL">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Needed Fuel: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="CALCULATOR_NEEDED_FUEL_VALUE">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="CALCULATOR_RIDE_PRICE_VALUE">
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="CALCULATOR_FUEL_CONSUMPTION_LABEL">
+            <property name="text">
+             <string>Fuel Consumption:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="CALCULATOR_FUEL_PRICE_LABEL">
+            <property name="text">
+             <string>Fuel Price: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="CALCULATOR_RIDE_PRICE_LABEL">
+            <property name="text">
+             <string>Ride Price: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="CALCULATOR_DISTANCE_VALUE">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="CALCULATOR_DISTANCE_LABEL">
+            <property name="text">
+             <string>Distance: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="CALCULATOR_FUEL_CONSUMPTION_VALUE">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="CALCULATOR_DISTANCE_UNIT_LABEL">
+            <property name="text">
+             <string>Km</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="CALCULATOR_FUEL_PRICE_UNIT_LABEL">
+            <property name="text">
+             <string>PLN</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLabel" name="CALCULATOR_FUEL_CONSUMPTION_UNIT_LABEL">
+            <property name="text">
+             <string>l/100km</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="CALCULATOR_NEEDED_FUEL_UNIT_LABEL">
+            <property name="text">
+             <string>l</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLabel" name="CALCULATOR_RIDE_PRICE_UNIT_LABEL">
+            <property name="text">
+             <string>PLN</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="CALCULATOR_CALCULATE_BUTTON">
+         <property name="text">
+          <string>Calculate</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="SELECT_CAR_MENU" stretch="1,0">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QComboBox" name="SELECT_CAR">
+       <item>
+        <property name="text">
+         <string>Wybierz Pojazd</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="DELETE_BUTTON">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>64</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>DELETE</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
