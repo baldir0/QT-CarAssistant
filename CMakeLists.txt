@@ -29,6 +29,8 @@ set(PROJECT_SOURCES
         uicontroller.h uicontroller.cpp
         newcarform.h newcarform.cpp newcarform.ui
         calculator.h calculator.cpp
+        newexpenseform.h newexpenseform.cpp newexpenseform.ui
+        newfuelingform.h newfuelingform.cpp newfuelingform.ui
         logger.h logger.cpp
         ${TS_FILES}
 )
@@ -39,7 +41,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
-#    set_property(TARGET EkonomizerV2 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#    set_property(TARGET EkonomizerV2 APPEND PROPERTSY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 
