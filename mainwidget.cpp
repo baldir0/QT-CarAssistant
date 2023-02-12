@@ -4,6 +4,7 @@
 #include "newcarform.h"
 #include "newexpenseform.h"
 #include "newfuelingform.h"
+#include "oilchange.h"
 
 #include "logger.h"
 
@@ -25,6 +26,7 @@ MainWidget::MainWidget(QWidget *parent)
     this->car->load();
     UIController::loadStatisticsPage(*this->car, *this->ui);
     UIController::loadServicePage(*this->car, *this->ui);
+    UIController::loadHomePage(*this->car, *this->ui);
 }
 
 MainWidget::~MainWidget()
@@ -85,19 +87,25 @@ void MainWidget::on_CALCULATOR_CALCULATE_BUTTON_clicked() {
     float result = 0;
     switch (t) {
         case Calculator::TRIP_PRICE:
-            result = Calculator::tripPrice(ui->CALCULATOR_DISTANCE_VALUE->text().toFloat(), ui->CALCULATOR_FUEL_PRICE_VALUE->text().toFloat(), ui->CALCULATOR_FUEL_CONSUMPTION_VALUE->text().toFloat());
+            result = Calculator::tripPrice(
+                        ui->CALCULATOR_DISTANCE_VALUE->value(),
+                        ui->CALCULATOR_FUEL_PRICE_VALUE->value(),
+                        ui->CALCULATOR_FUEL_CONSUMPTION_VALUE->value());
             UIController::setLineEditValue(QString::number(result), ui->CALCULATOR_RIDE_PRICE_VALUE);
         break;
         case Calculator::DISTANCE:
-            result = Calculator::distance(ui->CALCULATOR_NEEDED_FUEL_VALUE->text().toFloat(), ui->CALCULATOR_FUEL_CONSUMPTION_VALUE->text().toFloat());
+            result = Calculator::distance(ui->CALCULATOR_NEEDED_FUEL_VALUE->value(),
+                                          ui->CALCULATOR_FUEL_CONSUMPTION_VALUE->value());
             UIController::setLineEditValue(QString::number(result), ui->CALCULATOR_DISTANCE_VALUE);
         break;
         case Calculator::FUEL_CONSUMPTION:
-            result = Calculator::fuelConsumptionUnit(ui->CALCULATOR_DISTANCE_VALUE->text().toFloat(), ui->CALCULATOR_NEEDED_FUEL_VALUE->text().toFloat());
+            result = Calculator::fuelConsumptionUnit(ui->CALCULATOR_DISTANCE_VALUE->value(),
+                                                     ui->CALCULATOR_NEEDED_FUEL_VALUE->value());
             UIController::setLineEditValue(QString::number(result), ui->CALCULATOR_FUEL_CONSUMPTION_VALUE);
         break;
         case Calculator::NEEDED_FUEL:
-            result = Calculator::neededFuel(ui->CALCULATOR_DISTANCE_VALUE->text().toFloat(), ui->CALCULATOR_FUEL_CONSUMPTION_VALUE->text().toFloat());
+            result = Calculator::neededFuel(ui->CALCULATOR_DISTANCE_VALUE->value(),
+                                            ui->CALCULATOR_FUEL_CONSUMPTION_VALUE->value());
             UIController::setLineEditValue(QString::number(result), ui->CALCULATOR_NEEDED_FUEL_VALUE);
         break;
     }
@@ -120,7 +128,7 @@ void MainWidget::on_DELETE_BUTTON_clicked() {
 void MainWidget::on_ADD_PETROL_clicked() {
     NewFuelingForm * fueling = new NewFuelingForm(this, this->car);
     fueling->exec();
-    qDebug() << fueling->result();
+    this->car->save();
 }
 
 
@@ -130,7 +138,8 @@ void MainWidget::on_REMOVE_PETROL_clicked() {
     if (!this->ui->PETROL_LIST->currentItem()) return;
     while (it != exList.end()) {
         Expense *ex = *it;
-        if (ex->getName() == this->ui->PETROL_LIST->currentItem()->text()) {
+        QString name = this->ui->PETROL_LIST->currentItem()->text().split("-").at(0);
+        if (ex->getName() == name) {
             this->car->removeExpense(exList.indexOf(*it));
             break;
         }
@@ -151,10 +160,11 @@ void MainWidget::on_ADD_EXPENSE_clicked() {
 void MainWidget::on_REMOVE_EXPENSE_clicked() {
     QVector<Expense*> exList = this->car->getExpenses();
     QVector<Expense*>::Iterator it = exList.begin();
-    if (! this->ui->EXPENSES_LIST->currentItem()) return;
+    if (!this->ui->EXPENSES_LIST->currentItem()) return;
+    QString name = this->ui->EXPENSES_LIST->currentItem()->text().split("-").at(0);
     while (it != exList.end()) {
         Expense *ex = *it;
-        if (ex->getName() == this->ui->EXPENSES_LIST->currentItem()->text()) {
+        if (ex->getName() == name) {
             this->car->removeExpense(exList.indexOf(*it));
             break;
         }
@@ -162,5 +172,12 @@ void MainWidget::on_REMOVE_EXPENSE_clicked() {
     }
     this->car->save();
     UIController::loadHomePage(*this->car, *this->ui);
+}
+
+
+void MainWidget::on_SERVICE_OIL_CHANGE_UPDATE_BTN_clicked() {
+    OilChange *oc = new OilChange(this, &this->car->getService());
+    oc->exec();
+    this->car->save();
 }
 

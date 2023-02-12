@@ -6,119 +6,123 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>796</width>
-    <height>545</height>
+    <width>308</width>
+    <height>299</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>470</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
-   </property>
-  </widget>
-  <widget class="QFrame" name="CALCULATOR_FIELDS_CONTAINER">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>80</y>
-     <width>756</width>
-     <height>391</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_4">
-    <item row="1" column="0">
-     <widget class="QLabel" name="Service_Label">
-      <property name="text">
-       <string>Type</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLineEdit" name="Name_Edit">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="Parts_Label">
-      <property name="text">
-       <string>Date</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="Other_Label">
-      <property name="text">
-       <string>Expense</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="Name_Label">
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QComboBox" name="comboBox">
-      <item>
-       <property name="text">
-        <string>Refueling</string>
-       </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QFrame" name="CALCULATOR_FIELDS_CONTAINER">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="1" column="0">
+       <widget class="QLabel" name="Service_Label">
+        <property name="text">
+         <string>Type</string>
+        </property>
+       </widget>
       </item>
-      <item>
-       <property name="text">
-        <string>Service</string>
-       </property>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="Name_Edit">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
-      <item>
-       <property name="text">
-        <string>Parts</string>
-       </property>
+      <item row="3" column="0">
+       <widget class="QLabel" name="Parts_Label">
+        <property name="text">
+         <string>Date</string>
+        </property>
+       </widget>
       </item>
-      <item>
-       <property name="text">
-        <string>Other</string>
-       </property>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QDateEdit" name="dateEdit"/>
-    </item>
-    <item row="4" column="2">
-     <widget class="QSpinBox" name="spinBox"/>
-    </item>
-   </layout>
-  </widget>
+      <item row="4" column="0">
+       <widget class="QLabel" name="Other_Label">
+        <property name="text">
+         <string>Expense</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="Name_Label">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>Refueling</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Service</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Parts</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Other</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QDateEdit" name="dateEdit">
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QDoubleSpinBox" name="Price">
+        <property name="wrapping">
+         <bool>false</bool>
+        </property>
+        <property name="suffix">
+         <string> PLN</string>
+        </property>
+        <property name="maximum">
+         <double>1000000000000000013287555072.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>

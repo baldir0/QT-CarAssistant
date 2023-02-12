@@ -17,8 +17,8 @@ NewExpenseForm::~NewExpenseForm() {
 void NewExpenseForm::on_buttonBox_accepted() {
     Expense * ex = new Expense(
                 this->ui->Name_Edit->text(),
-                QDate::fromString(this->ui->dateEdit->text()),
-                this->ui->spinBox->text().toDouble(),
+                QDate::fromString(this->ui->dateEdit->text(), "dd.MM.yyyy"),
+                this->ui->Price->value(),
                 Expense::getExpenseTypeFromInt(this->ui->comboBox->currentIndex()));
 
     this->car->addExpense(ex);
