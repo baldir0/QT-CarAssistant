@@ -2,7 +2,6 @@
 
 #include <QDebug>
 float Calculator::tripPrice(float distance, float fuelPrice, float fuelConsumption) {
-    qDebug() << distance;
     return distance * fuelConsumption / 100 * fuelPrice;
 }
 

@@ -35,8 +35,10 @@ public:
         short tankCapacity,
         float engineCapacity,
         Service::FuelType fuelType);
+
     void save();
     void load();
+    bool remove();
 
     void addExpense(Expense *ex);
     void removeExpense(int position);
@@ -50,7 +52,10 @@ public:
     QString getBrand();
     void setBrand(QString brand);
 
+
+
     Service & getService();
+    QVector<Expense*> getExpenses();
 };
 
 #endif // CAR_H

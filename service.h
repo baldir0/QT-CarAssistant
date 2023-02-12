@@ -11,7 +11,8 @@ private:
     QDate insuranceDate;
     QDate oilChangeDate;
     QDate serviceDate;
-    int oilChangeMileage;
+    int oilChangeMileage = 0;
+    int currentMileage = 0;
     short tankCapacity;
     float engineCapacity;
     int8_t fuelType;
@@ -28,7 +29,6 @@ public:
         GAS,
         OTHER
     };
-
     Service();
     Service(QString insuranceDate, QString oilChangeDate, QString serviceDate, int oilChangeMileage);
     QString getProductionDate();
@@ -41,6 +41,8 @@ public:
     void setServiceDate(QString date);
     int getOilChangeMileage();
     void setOilChangeMileage(int value);
+    int getCurrentMileage();
+    void setCurrentMileage(int value);
     short getTankCapacity();
     void setTankCapacity(short value);
     float getEngineCapacity();

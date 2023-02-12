@@ -16,6 +16,7 @@ class UIController
 
         static void loadStatisticsPage(Car & obj, Ui::MainWidget & ui);
         static void loadServicePage(Car & obj, Ui::MainWidget & ui);
+        static void loadHomePage(Car & obj, Ui::MainWidget & ui);
         static void switchActiveCalculationFields(Calculator::CalculationType calculationType, Ui::MainWidget & ui);
         static void setLineEditValue(QString value, QLineEdit *input);
 
