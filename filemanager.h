@@ -12,6 +12,7 @@ class FileManager
 public:
     FileManager();
     void open(QString path);
+
     void close();
     QByteArray readData();
 
@@ -21,7 +22,7 @@ public:
     void loadVehicleList();
 
     static QString getSaveLocation();
-
+    static bool remove(QString path);
 private:
     const QString DATA_FOLDER_NAME = "Ekonomizer";
     const QString FileExtension = "sav";

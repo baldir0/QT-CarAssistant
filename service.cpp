@@ -1,14 +1,17 @@
 #include "service.h"
+#include "service.h"
+#include "logger.h"
 
-Service::Service() {
 
-}
+Service::Service() { };
 
 Service::Service(QString insuranceDate, QString oilChangeDate, QString serviceDate, int oilChangeMileage) {
+    Logger::log<typeof(*this)>("Creating Service Data ... ");
     this->insuranceDate = QDate::fromString(insuranceDate, DATE_FORMAT);
     this->oilChangeDate = QDate::fromString(oilChangeDate, DATE_FORMAT);
     this->serviceDate = QDate::fromString(serviceDate, DATE_FORMAT);
     this->oilChangeMileage = oilChangeMileage;
+    Logger::log<typeof(*this)>("Service Data Created!");
 }
 
 QString Service::getProductionDate() {
@@ -44,11 +47,22 @@ void Service::setServiceDate(QString date) {
 }
 
 int Service::getOilChangeMileage() {
+    Logger::log<typeof(*this)>("Oil Change Mileage:" + QString::number(this->oilChangeMileage));
     return this->oilChangeMileage;
 }
 
 void Service::setOilChangeMileage(int value) {
     this->oilChangeMileage = value;
+}
+
+int Service::getCurrentMileage()
+{
+    return this->currentMileage;
+}
+
+void Service::setCurrentMileage(int value)
+{
+    this->currentMileage = value;
 }
 
 short Service::getTankCapacity() {
@@ -91,20 +105,14 @@ void Service::setFuelType(Service::FuelType fuelType) {
 }
 
 bool Service::checkInsuranceDate() {
-    QDate nextOilChange = this->insuranceDate.addYears(INSURANCE_EXPIRE_YEARS);
-    qDebug() << "[Service] Insurance Date:" << this->oilChangeDate;
-    qDebug() << "[Service] Insurance expire Date:" << nextOilChange;
-    qDebug() << "[Service] Days To next Oil Change:" << QDate::currentDate().daysTo(nextOilChange);
-    if (QDate::currentDate().daysTo(nextOilChange) < 0)
+    QDate insuranceExpireDate = this->insuranceDate.addYears(INSURANCE_EXPIRE_YEARS);
+    if (QDate::currentDate().daysTo(insuranceExpireDate) <= 0)
         return false;
     return true;
 }
 
 bool Service::checkOilChangeDate() {
     QDate nextOilChange = this->oilChangeDate.addYears(OIL_CHANGE_YEARS);
-    qDebug() << "[Service] Oil Change Date:" << this->oilChangeDate;
-    qDebug() << "[Service] Next Oil Change Date:" << nextOilChange;
-    qDebug() << "[Service] Days To next Oil Change:" << QDate::currentDate().daysTo(nextOilChange);
     if (QDate::currentDate().daysTo(nextOilChange) < 0)
         return false;
     return true;

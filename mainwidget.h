@@ -34,6 +34,8 @@ private slots:
 
     void setPage(int index);
 
+    void on_DELETE_BUTTON_clicked();
+
 private:
     bool loadingData = false;
     Ui::MainWidget *ui;

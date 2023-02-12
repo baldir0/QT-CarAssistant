@@ -3,12 +3,14 @@
 #include "uicontroller.h"
 #include "newcarform.h"
 
+#include "logger.h"
+
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
 {
     ui->setupUi(this);
-
+    Logger::log<typeof(*this)>("Main Widget Constructor ...");
     // LOAD FILES TO LIST
     this->fm = new FileManager();
     this->fm->checkSaveLocalization();
@@ -17,6 +19,10 @@ MainWidget::MainWidget(QWidget *parent)
     this->loadingData = false;
 
     this->ui->SELECT_CAR->setCurrentIndex(0);
+    this->car = new Car(this->ui->SELECT_CAR->currentText());
+    this->car->load();
+    UIController::loadStatisticsPage(*this->car, *this->ui);
+    UIController::loadServicePage(*this->car, *this->ui);
 }
 
 MainWidget::~MainWidget()
@@ -26,6 +32,7 @@ MainWidget::~MainWidget()
 
 void MainWidget::on_SELECT_CAR_currentIndexChanged(int index)
 {
+    Logger::log<typeof(*this)>("Changing Active Car ...");
     if (index < 0 || loadingData) return;
     qDebug() << "Total Elements: " << this->ui->SELECT_CAR->count() << "Current Index:" << index;
     if (index == this->ui->SELECT_CAR->count() - 1) {
@@ -33,18 +40,18 @@ void MainWidget::on_SELECT_CAR_currentIndexChanged(int index)
         NewCarForm *form = new NewCarForm(this);
         form->exec();
         if (form->result()) {
-            qDebug() << "Loading Car List";
             UIController::loadCarList(this->ui->SELECT_CAR);
         }
-        qDebug() << "Result:" << form->result();
+        Logger::log<typeof(*this)>("Car Created!");
+        Logger::log<typeof(*this)>("Result: " + QString::number(form->result()));
         return;
     }
 
     qDebug() << "Loading Car Info...";
     this->car = new Car(this->ui->SELECT_CAR->currentText());
     this->car->load();
-    UIController::loadStatisticsPage(*this->car, *this->ui);
-    UIController::loadServicePage(*this->car, *this->ui);
+    UIController::loadHomePage(*this->car, *this->ui);
+    Logger::log<typeof(*this)>("Active Car Changed!");
 }
 
 void MainWidget::on_CALCULATOR_OPERATION_PICK_currentIndexChanged(int index) {
@@ -52,14 +59,17 @@ void MainWidget::on_CALCULATOR_OPERATION_PICK_currentIndexChanged(int index) {
 }
 
 void MainWidget::on_HOME_BUTTON_clicked() {
+    UIController::loadHomePage(*this->car, *this->ui);
     this->setPage(0);
 }
 
 void MainWidget::on_STATISTICS_BUTTON_clicked() {
+    UIController::loadStatisticsPage(*this->car, *this->ui);
     this->setPage(1);
 }
 
 void MainWidget::on_SERVICE_BUTTON_clicked() {
+    UIController::loadServicePage(*this->car, *this->ui);
     this->setPage(2);
 }
 
@@ -93,5 +103,14 @@ void MainWidget::on_CALCULATOR_CALCULATE_BUTTON_clicked() {
 
 void MainWidget::setPage(int index) {
     UIController::setPage(*this->ui->APP_CONTENT, index);
+}
+
+
+void MainWidget::on_DELETE_BUTTON_clicked() {
+    if (this->car->remove()) {
+        this->loadingData = true;
+        UIController::loadCarList(this->ui->SELECT_CAR);
+        this->loadingData = false;
+    }
 }
 
