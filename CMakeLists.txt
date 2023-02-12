@@ -30,6 +30,7 @@ set(PROJECT_SOURCES
         newcarform.h newcarform.cpp newcarform.ui
         calculator.h calculator.cpp
         newexpenseform.h newexpenseform.cpp newexpenseform.ui
+        newfuelingform.h newfuelingform.cpp newfuelingform.ui
         ${TS_FILES}
 )
 
