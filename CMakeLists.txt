@@ -29,6 +29,7 @@ set(PROJECT_SOURCES
         uicontroller.h uicontroller.cpp
         newcarform.h newcarform.cpp newcarform.ui
         calculator.h calculator.cpp
+        logger.h logger.cpp
         ${TS_FILES}
 )
 
