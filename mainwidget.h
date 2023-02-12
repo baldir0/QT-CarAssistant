@@ -36,6 +36,14 @@ private slots:
 
     void on_DELETE_BUTTON_clicked();
 
+    void on_ADD_PETROL_clicked();
+
+    void on_REMOVE_PETROL_clicked();
+
+    void on_ADD_EXPENSE_clicked();
+
+    void on_REMOVE_EXPENSE_clicked();
+
 private:
     bool loadingData = false;
     Ui::MainWidget *ui;

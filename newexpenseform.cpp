@@ -1,6 +1,31 @@
 #include "newexpenseform.h"
+#include "ui_newexpenseform.h"
+#include "expense.h"
 
-newexpenseform::newexpenseform()
+NewExpenseForm::NewExpenseForm(QWidget *parent, Car *obj) :
+    QDialog(parent),
+    ui(new Ui::NewExpenseForm)
 {
-
+    ui->setupUi(this);
+    this->car = obj;
 }
+
+NewExpenseForm::~NewExpenseForm() {
+    delete ui;
+}
+
+void NewExpenseForm::on_buttonBox_accepted() {
+    Expense * ex = new Expense(
+                this->ui->Name_Edit->text(),
+                QDate::fromString(this->ui->dateEdit->text()),
+                this->ui->spinBox->text().toDouble(),
+                Expense::getExpenseTypeFromInt(this->ui->comboBox->currentIndex()));
+
+    this->car->addExpense(ex);
+}
+
+
+void NewExpenseForm::on_buttonBox_rejected() {
+    this->close();
+}
+

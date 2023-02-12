@@ -88,9 +88,16 @@ void UIController::loadHomePage(Car & obj, Ui::MainWidget & ui) {
 
     QVector<Expense*> expensesList = obj.getExpenses();
     QVectorIterator<Expense*> expense(expensesList);
+    ui.EXPENSES_LIST->clear();
+    ui.PETROL_LIST->clear();
     while (expense.hasNext()) {
-        ui.EXPENSES_LIST->addItem(new QListWidgetItem(expense.next()->getName()));
+        Expense *ex = expense.next();
+        ui.EXPENSES_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense())));
+        if (ex->getExpenseType() == Expense::REFUELING)
+            ui.PETROL_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense())));
     }
+
+
     Logger::log<UIController>("Home Page Loaded!");
 }
 
