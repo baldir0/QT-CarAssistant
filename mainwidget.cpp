@@ -128,6 +128,7 @@ void MainWidget::on_DELETE_BUTTON_clicked() {
 void MainWidget::on_ADD_PETROL_clicked() {
     NewFuelingForm * fueling = new NewFuelingForm(this, this->car);
     fueling->exec();
+    UIController::loadHomePage(*this->car, *this->ui);
     this->car->save();
 }
 
@@ -154,6 +155,7 @@ void MainWidget::on_ADD_EXPENSE_clicked() {
     NewExpenseForm * expense = new NewExpenseForm(this, this->car);
     expense->exec();
     this->car->save();
+    UIController::loadHomePage(*this->car, *this->ui);
 }
 
 
