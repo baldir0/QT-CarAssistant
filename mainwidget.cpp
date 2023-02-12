@@ -2,6 +2,8 @@
 #include "./ui_mainwidget.h"
 #include "uicontroller.h"
 #include "newcarform.h"
+#include "newexpenseform.h"
+#include "newfuelingform.h"
 
 #include "logger.h"
 
@@ -112,5 +114,53 @@ void MainWidget::on_DELETE_BUTTON_clicked() {
         UIController::loadCarList(this->ui->SELECT_CAR);
         this->loadingData = false;
     }
+}
+
+
+void MainWidget::on_ADD_PETROL_clicked() {
+    NewFuelingForm * fueling = new NewFuelingForm(this, this->car);
+    fueling->exec();
+    qDebug() << fueling->result();
+}
+
+
+void MainWidget::on_REMOVE_PETROL_clicked() {
+    QVector<Expense*> exList = this->car->getExpenses();
+    QVector<Expense*>::Iterator it = exList.begin();
+    if (!this->ui->PETROL_LIST->currentItem()) return;
+    while (it != exList.end()) {
+        Expense *ex = *it;
+        if (ex->getName() == this->ui->PETROL_LIST->currentItem()->text()) {
+            this->car->removeExpense(exList.indexOf(*it));
+            break;
+        }
+        it++;
+    }
+    this->car->save();
+    UIController::loadHomePage(*this->car, *this->ui);
+}
+
+
+void MainWidget::on_ADD_EXPENSE_clicked() {
+    NewExpenseForm * expense = new NewExpenseForm(this, this->car);
+    expense->exec();
+    this->car->save();
+}
+
+
+void MainWidget::on_REMOVE_EXPENSE_clicked() {
+    QVector<Expense*> exList = this->car->getExpenses();
+    QVector<Expense*>::Iterator it = exList.begin();
+    if (! this->ui->EXPENSES_LIST->currentItem()) return;
+    while (it != exList.end()) {
+        Expense *ex = *it;
+        if (ex->getName() == this->ui->EXPENSES_LIST->currentItem()->text()) {
+            this->car->removeExpense(exList.indexOf(*it));
+            break;
+        }
+        it++;
+    }
+    this->car->save();
+    UIController::loadHomePage(*this->car, *this->ui);
 }
 

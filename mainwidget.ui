@@ -85,9 +85,9 @@
               </widget>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout">
+              <layout class="QHBoxLayout" name="EXPENSES_BUTTON_BOX">
                <item>
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="QPushButton" name="ADD_EXPENSE">
                  <property name="autoFillBackground">
                   <bool>false</bool>
                  </property>
@@ -125,7 +125,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="REMOVE_EXPENSE">
                  <property name="text">
                   <string>-</string>
                  </property>
@@ -166,7 +166,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <widget class="QFrame" name="PETROL_LABEL">
             <property name="frameShape">
@@ -175,13 +175,66 @@
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,0">
              <item>
-              <widget class="QLabel" name="LABEL_TEXT">
+              <widget class="QLabel" name="LABEL_PETROL">
                <property name="text">
                 <string>Petrol</string>
                </property>
               </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="PETROL_BUTTON_BOX">
+               <item>
+                <widget class="QPushButton" name="ADD_PETROL">
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>+</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-add">
+                   <normaloff>.</normaloff>.</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>16</width>
+                   <height>16</height>
+                  </size>
+                 </property>
+                 <property name="checkable">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoRepeat">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoRepeatInterval">
+                  <number>100</number>
+                 </property>
+                 <property name="autoDefault">
+                  <bool>false</bool>
+                 </property>
+                 <property name="default">
+                  <bool>false</bool>
+                 </property>
+                 <property name="flat">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="REMOVE_PETROL">
+                 <property name="text">
+                  <string>-</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-remove">
+                   <normaloff>.</normaloff>.</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </widget>
@@ -194,6 +247,11 @@
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <item>
+              <widget class="QListWidget" name="PETROL_LIST"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>

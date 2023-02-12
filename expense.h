@@ -26,6 +26,8 @@ public:
     int8_t getExpenseType();
     void setExpenseType(Expense::ExpenseType type);
 
+    static ExpenseType getExpenseTypeFromInt(int val);
+
     QString toString();
 private:
     QString name;

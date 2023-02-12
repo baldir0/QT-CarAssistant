@@ -47,6 +47,11 @@ void Expense::setExpenseType(Expense::ExpenseType type) {
     this->type = type;
 }
 
+Expense::ExpenseType Expense::getExpenseTypeFromInt(int val)
+{
+    return ExpenseType(val);
+}
+
 QString Expense::toString()
 {
     return name + "\t-\t" +
