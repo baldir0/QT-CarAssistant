@@ -93,9 +93,9 @@ void UIController::loadHomePage(Car & obj, Ui::MainWidget & ui) {
     while (expense.hasNext()) {
         Expense *ex = expense.next();
         qDebug() << "Expense" << ex->getDate() << ex->getExpense() << ex->getName();
-        ui.EXPENSES_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense())));
+        ui.EXPENSES_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense()) + "PLN"));
         if (ex->getExpenseType() == Expense::REFUELING)
-            ui.PETROL_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense())));
+            ui.PETROL_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense()) + "PLN"));
     }
 
 

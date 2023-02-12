@@ -55,7 +55,7 @@
    <item>
     <widget class="QStackedWidget" name="APP_CONTENT">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="HOME_PAGE">
       <layout class="QGridLayout" name="gridLayout_2" rowstretch="1" columnstretch="1,0">
