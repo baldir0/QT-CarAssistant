@@ -59,7 +59,7 @@ void Car::save() {
     fileData.insert(9, QString::number(this->service.getTankCapacity()));
     fileData.insert(10, QString::number(this->service.getEngineCapacity()));
     fileData.insert(11, QString::number(this->service.getFuelType()));
-    fileData.insert(12, QString::number(this->service.getOilChangeMileage()));
+    fileData.insert(12, QString::number(this->service.getCurrentMileage()));
 
     QVectorIterator<Expense*> it(this->expenseList);
     while (it.hasNext()) {
@@ -143,7 +143,7 @@ void Car::addExpense(Expense *ex) {
 }
 
 void Car::removeExpense(int position) {
-    Logger::log<typeof(*this)>("Removing Expense ...");
+    Logger::log<typeof(*this)>("Removing Expense At " + QString::number(position) + " ...");
     this->expenseList.removeAt(position);
 }
 

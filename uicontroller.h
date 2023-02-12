@@ -18,12 +18,12 @@ class UIController
         static void loadServicePage(Car & obj, Ui::MainWidget & ui);
         static void loadHomePage(Car & obj, Ui::MainWidget & ui);
         static void switchActiveCalculationFields(Calculator::CalculationType calculationType, Ui::MainWidget & ui);
-        static void setLineEditValue(QString value, QLineEdit *input);
+        static void setLineEditValue(QString value, QDoubleSpinBox *input);
 
 public slots:
 
 private:
-        static void setEnableCalculatorField(QLabel *label, QLineEdit *input, QLabel *unitLabel, bool enabled = false, bool readOnly = false);
+        static void setEnableCalculatorField(QLabel *label, QDoubleSpinBox *input, bool enabled = false, bool readOnly = false);
 };
 
 #endif // UICONTROLLER_H

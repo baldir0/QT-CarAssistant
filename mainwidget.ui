@@ -55,7 +55,7 @@
    <item>
     <widget class="QStackedWidget" name="APP_CONTENT">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="HOME_PAGE">
       <layout class="QGridLayout" name="gridLayout_2" rowstretch="1" columnstretch="1,0">
@@ -624,6 +624,13 @@
            </item>
           </layout>
          </item>
+         <item row="7" column="0" colspan="2">
+          <widget class="QPushButton" name="SERVICE_OIL_CHANGE_UPDATE_BTN">
+           <property name="text">
+            <string>Update Oil Change</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>
@@ -649,7 +656,7 @@
          </item>
          <item>
           <property name="text">
-           <string>Fuel Consumption</string>
+           <string>Needed Fuel</string>
           </property>
          </item>
         </widget>
@@ -663,10 +670,43 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="CALCULATOR_FUEL_PRICE_VALUE">
+          <item row="0" column="2">
+           <widget class="QDoubleSpinBox" name="CALCULATOR_DISTANCE_VALUE">
+            <property name="suffix">
+             <string> Km</string>
+            </property>
+            <property name="maximum">
+             <double>100000000000000004764729344.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="CALCULATOR_FUEL_CONSUMPTION_LABEL">
             <property name="text">
-             <string>0</string>
+             <string>Fuel Consumption:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QDoubleSpinBox" name="CALCULATOR_FUEL_CONSUMPTION_VALUE">
+            <property name="suffix">
+             <string> L/1000km</string>
+            </property>
+            <property name="maximum">
+             <double>100000000000000004764729344.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QDoubleSpinBox" name="CALCULATOR_NEEDED_FUEL_VALUE">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="suffix">
+             <string> L</string>
+            </property>
+            <property name="maximum">
+             <double>10000000000000000000000.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -680,40 +720,10 @@
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
-           <widget class="QLineEdit" name="CALCULATOR_NEEDED_FUEL_VALUE">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="CALCULATOR_DISTANCE_LABEL">
             <property name="text">
-             <string>0</string>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QLineEdit" name="CALCULATOR_RIDE_PRICE_VALUE">
-            <property name="text">
-             <string>0</string>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="CALCULATOR_FUEL_CONSUMPTION_LABEL">
-            <property name="text">
-             <string>Fuel Consumption:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="CALCULATOR_FUEL_PRICE_LABEL">
-            <property name="text">
-             <string>Fuel Price: </string>
+             <string>Distance: </string>
             </property>
            </widget>
           </item>
@@ -724,59 +734,30 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="CALCULATOR_DISTANCE_VALUE">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="CALCULATOR_DISTANCE_LABEL">
-            <property name="text">
-             <string>Distance: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="CALCULATOR_FUEL_CONSUMPTION_VALUE">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="CALCULATOR_DISTANCE_UNIT_LABEL">
-            <property name="text">
-             <string>Km</string>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="2">
-           <widget class="QLabel" name="CALCULATOR_FUEL_PRICE_UNIT_LABEL">
-            <property name="text">
-             <string>PLN</string>
+           <widget class="QDoubleSpinBox" name="CALCULATOR_FUEL_PRICE_VALUE">
+            <property name="suffix">
+             <string> PLN</string>
             </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLabel" name="CALCULATOR_FUEL_CONSUMPTION_UNIT_LABEL">
-            <property name="text">
-             <string>l/100km</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="2">
-           <widget class="QLabel" name="CALCULATOR_NEEDED_FUEL_UNIT_LABEL">
-            <property name="text">
-             <string>l</string>
+            <property name="maximum">
+             <double>100000000000000000.000000000000000</double>
             </property>
            </widget>
           </item>
           <item row="6" column="2">
-           <widget class="QLabel" name="CALCULATOR_RIDE_PRICE_UNIT_LABEL">
+           <widget class="QDoubleSpinBox" name="CALCULATOR_RIDE_PRICE_VALUE">
+            <property name="suffix">
+             <string> PLN</string>
+            </property>
+            <property name="maximum">
+             <double>9999999999999999583119736832.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="CALCULATOR_FUEL_PRICE_LABEL">
             <property name="text">
-             <string>PLN</string>
+             <string>Fuel Price: </string>
             </property>
            </widget>
           </item>

@@ -106,7 +106,7 @@ void Service::setFuelType(Service::FuelType fuelType) {
 
 bool Service::checkInsuranceDate() {
     QDate insuranceExpireDate = this->insuranceDate.addYears(INSURANCE_EXPIRE_YEARS);
-    if (QDate::currentDate().daysTo(insuranceExpireDate) <= 0)
+    if (QDate::currentDate().daysTo(insuranceExpireDate) < 0)
         return false;
     return true;
 }
@@ -119,8 +119,7 @@ bool Service::checkOilChangeDate() {
 }
 
 bool Service::checkOilChangeMileage() {
-    int lastKnownMileage = 0; // READ IT EVERY TIME WHEN MILEAGE IS KNOWN
-    if (lastKnownMileage - this->oilChangeMileage > OIL_CHANGE_MILEAGE)
+    if (this->currentMileage - this->oilChangeMileage > OIL_CHANGE_MILEAGE)
         return false;
     return true;
 }

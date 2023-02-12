@@ -75,8 +75,8 @@ void UIController::loadServicePage(Car & obj, Ui::MainWidget & ui) {
         ui.SERVICE_LAST_OIL_CHANGE_MILEAGE_STATUS->setText("Ok");
         ui.SERVICE_LAST_OIL_CHANGE_MILEAGE_STATUS->setStyleSheet("color: green");
     } else {
-        int km = ui.SERVICE_LAST_OIL_CHANGE_MILEAGE_VALUE->text().toInt();
-        ui.SERVICE_LAST_OIL_CHANGE_MILEAGE_STATUS->setText("There is " + QString::number(km) + " km(s) from your last oil change!");
+        int km = obj.getService().getCurrentMileage() - obj.getService().getOilChangeMileage();
+        ui.SERVICE_LAST_OIL_CHANGE_MILEAGE_STATUS->setText("There is " + QString::number(km) + " from your last oil change!");
         ui.SERVICE_LAST_OIL_CHANGE_MILEAGE_STATUS->setStyleSheet("color: red");
     }
 
@@ -92,6 +92,7 @@ void UIController::loadHomePage(Car & obj, Ui::MainWidget & ui) {
     ui.PETROL_LIST->clear();
     while (expense.hasNext()) {
         Expense *ex = expense.next();
+        qDebug() << "Expense" << ex->getDate() << ex->getExpense() << ex->getName();
         ui.EXPENSES_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense())));
         if (ex->getExpenseType() == Expense::REFUELING)
             ui.PETROL_LIST->addItem(new QListWidgetItem(ex->getName() + "-" + ex->getDate() + "-" + QString::number(ex->getExpense())));
@@ -105,45 +106,44 @@ void UIController::switchActiveCalculationFields(Calculator::CalculationType cal
     Logger::log<UIController>("Switching calculator fields ...");
     switch (calculationType) {
     case Calculator::TRIP_PRICE:
-        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, ui.CALCULATOR_DISTANCE_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, ui.CALCULATOR_FUEL_CONSUMPTION_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, ui.CALCULATOR_FUEL_PRICE_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, ui.CALCULATOR_NEEDED_FUEL_UNIT_LABEL, false);
-        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, ui.CALCULATOR_RIDE_PRICE_UNIT_LABEL, true, true);
+        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, false);
+        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, true, true);
         break;
     case Calculator::DISTANCE:
-        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, ui.CALCULATOR_DISTANCE_UNIT_LABEL, true, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, ui.CALCULATOR_FUEL_CONSUMPTION_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, ui.CALCULATOR_FUEL_PRICE_UNIT_LABEL, false);
-        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, ui.CALCULATOR_NEEDED_FUEL_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, ui.CALCULATOR_RIDE_PRICE_UNIT_LABEL, false);
+        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, true, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, false);
+        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, false);
         break;
     case Calculator::FUEL_CONSUMPTION:
-        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, ui.CALCULATOR_DISTANCE_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, ui.CALCULATOR_FUEL_CONSUMPTION_UNIT_LABEL, true, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, ui.CALCULATOR_FUEL_PRICE_UNIT_LABEL, false);
-        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, ui.CALCULATOR_NEEDED_FUEL_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, ui.CALCULATOR_RIDE_PRICE_UNIT_LABEL, false);
+        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, true, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, false);
+        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, false);
         break;
     case Calculator::NEEDED_FUEL:
-        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, ui.CALCULATOR_DISTANCE_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, ui.CALCULATOR_FUEL_CONSUMPTION_UNIT_LABEL, true);
-        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, ui.CALCULATOR_FUEL_PRICE_UNIT_LABEL, false);
-        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, ui.CALCULATOR_NEEDED_FUEL_UNIT_LABEL, true, true);
-        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, ui.CALCULATOR_RIDE_PRICE_UNIT_LABEL, false);
+        setEnableCalculatorField(ui.CALCULATOR_DISTANCE_LABEL, ui.CALCULATOR_DISTANCE_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_CONSUMPTION_LABEL, ui.CALCULATOR_FUEL_CONSUMPTION_VALUE, true);
+        setEnableCalculatorField(ui.CALCULATOR_FUEL_PRICE_LABEL, ui.CALCULATOR_FUEL_PRICE_VALUE, false);
+        setEnableCalculatorField(ui.CALCULATOR_NEEDED_FUEL_LABEL, ui.CALCULATOR_NEEDED_FUEL_VALUE, true, true);
+        setEnableCalculatorField(ui.CALCULATOR_RIDE_PRICE_LABEL, ui.CALCULATOR_RIDE_PRICE_VALUE, false);
         break;
     }
     Logger::log<UIController>("Calculator fields switched!");
 }
 
-void UIController::setEnableCalculatorField(QLabel *label, QLineEdit *input, QLabel *unitLabel, bool enabled, bool readOnly)
+void UIController::setEnableCalculatorField(QLabel *label, QDoubleSpinBox *input, bool enabled, bool readOnly)
 {
     label->setEnabled(enabled);
     input->setEnabled(enabled);
     input->setReadOnly(readOnly);
-    unitLabel->setEnabled(enabled);
 }
 
-void UIController::setLineEditValue(QString value, QLineEdit *input) {
-    input->setText(value);
+void UIController::setLineEditValue(QString value, QDoubleSpinBox *input) {
+    input->setValue(value.toDouble());
 }

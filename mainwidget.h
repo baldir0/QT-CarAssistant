@@ -44,6 +44,8 @@ private slots:
 
     void on_REMOVE_EXPENSE_clicked();
 
+    void on_SERVICE_OIL_CHANGE_UPDATE_BTN_clicked();
+
 private:
     bool loadingData = false;
     Ui::MainWidget *ui;
